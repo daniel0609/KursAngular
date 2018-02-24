@@ -13,6 +13,17 @@ export class AppComponent {
 
   days = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'];
   dogs = new Array<Dog>();
+
+  isVisible = false;
+  isHidden = true;
+  show() {
+    console.log('wykonalo sie show()');
+    this.isVisible = !this.isVisible;
+  }
+
+  hidden() {
+    this.isHidden = !this.isHidden;
+  }
   constructor() {
     this.dogs.push(
       new Dog('Reksio', 4),

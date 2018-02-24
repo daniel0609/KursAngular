@@ -1,11 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
 <p>
-  Witamy na kursie {{title | uppercase}} <br>
-  Liczba pi to: {{pi | number: '1.3'}} <br>
-  Dzisiaj jest: {{date | date: 'dd-MM-yyyy'}} <br>
-  Moj pies to: {{dog?.name}} <br> <!-- '?' sprawdza czy dog nie jest nullem -->
-  Ma {{dog && dog. age}} lata <br>
+  Witamy na kursie {{title | uppercase}}
+  <br> Liczba pi to: {{pi | number: '1.3'}}
+  <br> Dzisiaj jest: {{date | date: 'dd-MM-yyyy'}}
+  <br> Moj pies to: {{dog?.name}}
+  <br>
+  <!-- '?' sprawdza czy dog nie jest nullem -->
+  Ma {{dog && dog. age}} lata
+  <br>
 
   <ul>
     <li *ngFor="let day of days">
@@ -18,12 +21,13 @@
       <th>Name</th>
       <th>Age</th>
     </tr>
-    <tr *ngFor = "let dog of dogs; let i = index">
+    <tr *ngFor="let dog of dogs; let i = index">
       <td>{{i}}</td>
       <td>{{dog.name}}</td>
       <td>{{dog.age}}</td>
     </tr>
   </table>
+
   <table>
     <tr *ngFor="let i of [1, 2, 3, 4]">
       <td>td1 {{i}}</td>
@@ -31,8 +35,69 @@
     </tr>
   </table>
 
+  <div *ngIf="days.length > 0">
+    <ul>
+      <ng-container *ngFor="let day of days, let e=even">
+        <li *ngIf="e">
+          {{day}}
+        </li>
+      </ng-container>
+    </ul>
+  </div>
 
-<!--<div style="text-align:center">
+  <div *ngFor="let dog of dogs">
+    <div *ngIf="dog.age > 3">
+      {{dog.name}}
+    </div>
+  </div>
+
+  <div *ngIf="dogs.length > 0; then areDogs; else noDogs"></div>
+
+  <ng-template #areDogs>
+    <ul>
+      <ng-container *ngFor="let day of days, let e=even">
+        <li *ngIf="e">
+          {{day}}
+        </li>
+      </ng-container>
+    </ul>
+  </ng-template>
+
+
+  <ng-template #noDogs>
+    <p>Nie ma pieskow :(</p>
+  </ng-template>
+
+  <div *ngFor="let day of days">
+    <div [ngSwitch]="day">
+      <div *ngSwitchCase="'Poniedziałek'">Monday</div>
+      <div *ngSwitchCase="'Wtorek'">Thusday</div>
+      <div *ngSwitchCase="'Środa'">Wednesday</div>
+      <div *ngSwitchCase="'Czwartek'">THursday</div>
+      <div *ngSwitchCase="'Piątek'">Friday</div>
+      <div *ngSwitchCase="'Sobota'">Saturday</div>
+      <div *ngSwitchDefault>Sunday</div>
+    </div>
+  </div>
+
+  <div *ngIf="isVisible">
+    <div *ngFor="let da of days">
+      <div> {{day}} </div>
+    </div>
+  </div>
+  <button (click)="show()">NgIf</button>
+
+  <br>
+  <p>Dni tygodnia - uzycie hidden</p>
+  <div [hidden]="isHidden">
+    <div *ngFor="let day of days">
+      <div>{{day}}</div>
+    </div>
+  </div>
+  <button (click)="hidden()">Hidden</button>
+
+  <!--
+  <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
   </h1>
