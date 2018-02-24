@@ -7,12 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  inputText = 'Pole Textowe';
+  inputText2Way = '';
+  button = true;
+  showClick = '';
 
-  isVisible = true;
-
-  days = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'];
-
-  show() {
-    this.isVisible = !this.isVisible;
+  click(event) {
+    this.showClick = 'Przycisk aktywny!';
+    this.button = false;
   }
 }

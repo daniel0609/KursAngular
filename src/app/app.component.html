@@ -1,10 +1,17 @@
 <h3> Witamy na kursie {{title}}</h3>
 
-<p>Dni tygodnia - uzyćie ngIf oraz Hidden</p>
+<div>
+  <input [value]="inputText">
+  <!--przypisanie jednostronne -->
+</div>
 
-<ng-container *ngIf="isVisible">
-  <div *ngFor="let day of days">
-    <div>{{day}}</div>
-  </div>
-</ng-container>
-<button (click)="show()">IfNg</button>
+<div>
+  <input [(ngModel)]="inputText2Way">
+  {{inputText2Way}}
+</div>
+
+<div>
+  <input (click)="click($event)">
+  <button [disabled]="button">Dodaj</button>
+  {{showClick}}
+</div>
