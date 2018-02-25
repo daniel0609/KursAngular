@@ -6,8 +6,7 @@
 </div>
 
 <div>
-  <input [(ngModel)]="inputText2Way">
-  {{inputText2Way}}
+  <input [(ngModel)]="inputText2Way"> {{inputText2Way}}
 </div>
 
 <div>
@@ -15,3 +14,43 @@
   <button [disabled]="button">Dodaj</button>
   {{showClick}}
 </div>
+
+<h4 [className]="colorClass"> Bindowanie jednostronne {{title}}</h4>
+
+<img [src]="logoUrl">
+<br>
+<input [maxLength]="maxLen" [value]="inputText">
+<button [disabled]="isDisable" (click)="change()">Dodaj</button>
+
+<h4 [className]="colorClass"> Bindowanie properties {{title}}</h4>
+
+<input [disabled]="isDisable2" (focus)="onFocus()">
+<br>
+<input [disabled]="isDisable2" (click)="onClick($event)">
+<br>
+<input [disabled]="isDisable2" (mousemove)="onMouseMove($event)">
+<br>
+<input [disabled]="isDisable2" (paste)="onPaste()">{{inputText2}}
+<br>
+<button (click)="change2()"> Zmiana</button>
+
+<h3>2Way binding</h3>
+Jego zawod to {{profession}}, a specjalnosc to {{skill}}
+<br>
+<input [value]="profession" (input)="saveProff($event)">
+<br>
+<input [value]="skill" (input)="saveSkill($event)">
+
+<h4>2Way binding with FormsModule</h4>
+Należy go zaimportować przez
+<br>import FormsModule from '@angular/forms';
+<br> i dodać do imports: FormsModule
+<br>
+
+Jego zawd to {{profession2}}a profesja to {{skill2}}
+<br>
+<label>Profesja</label>
+<input [(ngModel)]="profession2">
+<br>
+<label> Umiejetnosci</label>
+<input [(ngModel)]="skill2">
