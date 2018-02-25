@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  tasksList = ['Sprzątanie kuwety', 'Gotowanie', 'Nauka angulara'];
+
+  selected(event: string): void {
+    console.log('odebrlem task');
+    console.log(event);
+  }
 }
